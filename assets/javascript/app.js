@@ -13,7 +13,22 @@ function loadQuestion(){
     const choices = quizQuestions[currentQuestion].choices; //
 
     $('#time').html('Time: ' + counter);
-    $('#game').html('<h4>' + question + '</h4>');
+    $('#game').html(`
+    <h4>${question}</h4>
+    ${loadChoices(choices)}
+    `);
+
 }
 
-loadQuestion();
+    function loadChoices(choices) {
+        let result = '';
+
+        for (let i = 0; i < choices.length; i++) {
+            result += `<p class="choice" data-answer="${choices[i]}">${choices[i]}</p>`;
+        }
+
+        return result;
+    }
+
+    loadQuestion();
+
